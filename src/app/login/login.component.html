@@ -57,7 +57,7 @@
                                             <label for="yourUsername" class="form-label">Email</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="email" ngModel required #email="ngModel" class="form-control"
+                                                <input type="text" name="email" [(ngModel)]="loginValue" ngModel required #email="ngModel" class="form-control"
                                                     id="yourUsername">
                                                 <div class="invalid-feedback">svp entrer votre email!</div>
                                             </div>
@@ -65,7 +65,7 @@
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Mot de passe</label>
-                                            <input type="password" name="password" ngModel required #password="ngModel" class="form-control"
+                                            <input type="password" name="password" [(ngModel)]="mdpValue" ngModel required #password="ngModel" class="form-control"
                                                 id="yourPassword">
                                             <div class="invalid-feedback">svp entrer votre mot de passe!</div>
                                         </div>

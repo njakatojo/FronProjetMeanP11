@@ -16,6 +16,8 @@ import { membres } from '../model/membre';
 })
 
 export class LoginComponent implements OnInit {
+  loginValue :string = ''
+  mdpValue :string = ''
   mess: any;
   modele: any;
   Employe = {
@@ -32,6 +34,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.modele = this.route.snapshot.paramMap.get('modele');
+    if (this.modele == 'Manager') {
+      this.loginValue = 'admin@gmail.com'
+      this.mdpValue = 'admin'
+    }else if (this.modele == 'Client') {
+      this.loginValue = 'client@gmail.com'
+      this.mdpValue = 'client'
+    }else if (this.modele == 'Employer') {
+      this.loginValue = 'employer@gmail.com'
+      this.mdpValue = 'employer'
+    }
   }
 
   seconnecter(forme: NgForm) {
