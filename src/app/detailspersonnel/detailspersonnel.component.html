@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Mon Sallon</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/acceuil">
+          <i class="bi bi-grid"></i>
+          <span>Tableau de bord</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/service">
+            <i class="bi bi-grid"></i>
+            <span>Gestion Service</span>
+        </a>
+    </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/gestionPersonnel">
+          <i class="bi bi-grid"></i>
+          <span>Gestion Personnel</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-grid"></i>
+          <span>Deconnexion</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+    </ul>
+
+  </aside>
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Profils</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+          <li class="breadcrumb-item">Employer</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <div *ngIf="Employer && Employer.length > 0">
+              <p><strong>Nom:</strong> {{ Employer[0].nom }}</p>
+              <p><strong>Prénom:</strong> {{ Employer[0].prenom }}</p>
+              <p><strong>Email:</strong> {{ Employer[0].email }}</p>
+              <!-- Ajoutez d'autres propriétés selon vos besoins -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="pagetitle">
+      <h1>Horaire de travail</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Lundi</th>
+                  <th scope="col">Mardi</th>
+                  <th scope="col">Mercredi</th>
+                  <th scope="col">Jeudi</th>
+                  <th scope="col">Vendredi</th>
+                  <th scope="col">Samedi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Heure</th>
+                  <td>{{ Monday }}</td>
+                  <td>{{ Tuesday }}</td>
+                  <td>{{ Wednesday }}</td>
+                  <td>{{ Thursday }}</td>
+                  <td>{{ Friday }}</td>
+                  <td>{{ Saturday }}</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td *ngFor="let All of jourOuvrable">
+                    <p (click)="OpenModal(All.libele)" style="cursor: pointer; color: green;">modifier</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-center">{{mess}}</p>
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal" [style.display]="modalDisplay">
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="CloseModal()">&times;</span>
+          <section class="section">
+            <div class="row">
+              <form class="row g-3" novalidate #forme="ngForm"
+              (ngSubmit)="UpdateRentrer(forme)">
+                  <div class="col-md-6">
+                      <label for="inputName5" class="form-label">Rentrer</label>
+                      <input type="time" class="form-control" id="inputName5" name="rentrer" ngModel
+                      #rentrer="ngModel" required>
+                      <input type="hidden" [(ngModel)]="hiddenValue" name="jour" />
+                  </div>
+                  <div>
+                      <button type="submit" class="btn btn-primary" (click)="CloseModal()">valider</button>
+                  </div>
+                </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <strong><span>RANDRIANARIVONY Joston Anjaramanana - RABEASIMBOLA Tojoniaina Njakanirina</span></strong>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+</body>
+<!-- Ajoutez ceci dans votre fichier HTML -->
+<script src="src/styles/style.js"></script>
+
+
+</html>

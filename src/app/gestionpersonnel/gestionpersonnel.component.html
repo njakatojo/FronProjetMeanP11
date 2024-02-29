@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Mon Sallon</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+
+
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/acceuil">
+                <i class="bi bi-grid"></i>
+                <span>Tableau de bord</span>
+              </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/service">
+                    <i class="bi bi-grid"></i>
+                    <span>Gestion Service</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/gestionPersonnel">
+                <i class="bi bi-grid"></i>
+                <span>Gestion Personnel</span>
+              </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="">
+                <i class="bi bi-grid"></i>
+                <span>Deconnexion</span>
+              </a>
+            </li><!-- End Dashboard Nav -->
+      
+          </ul>
+
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Personnel</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                    <li class="breadcrumb-item">Employer</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <section class="section">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <br>
+                        <form class="row g-3" novalidate #forme="ngForm"
+                            (ngSubmit)="inscrit(forme,'qwerty','Employer')">
+                            <div class="col-md-3">
+                                <label for="inputName5" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="inputName5" name="nom" ngModel
+                                    #nom="ngModel" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="inputEmail5" class="form-label">Prenom</label>
+                                <input type="text" class="form-control" id="inputEmail5" name="prenom" ngModel
+                                    #prenom="ngModel" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputPassword5" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="inputPassword5" name="email" ngModel
+                                    #email="ngModel" required>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">valider</button>
+                                <br>
+                                <p style="color: red;">{{mess}}</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <br>
+                        <form class="row g-3" #forme="ngForm">
+                            <div class="col-md-3">
+                                <input type="text" placeholder="recherche" class="form-control" id="inputEmail5"
+                                    name="motcle" ngModel #motcle="ngModel" (ngModelChange)="recherche(motcle.value)">
+                            </div>
+                        </form>
+                        <br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let All of Employer;let i = index">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{All.nom}}</td>
+                                    <td>{{All.prenom}}</td>
+                                    <td>{{All.email}}</td>
+                                    <td><a href="details/{{All._id}}" style="color: green;">details</a></td>
+                                    <td><a style="color: red;">suprimer</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                    <li class="breadcrumb-item">Client</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+          <strong><span>RANDRIANARIVONY Joston Anjaramanana - RABEASIMBOLA Tojoniaina Njakanirina</span></strong>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Mon Sallon</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  </header><!-- End Header -->
+
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="acceuilClient">
+              <i class="bi bi-person"></i>
+              <span>Client</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="">
+            <i class="bi bi-grid"></i>
+            <span>Deconnexion</span>
+          </a>
+        </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <section class="section dashboard">
+        <div class="row">
+  
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">Rendez-vous</h5>
+   
+  
+                  <!-- Default Tabs -->
+                  <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                      <li class="nav-item flex-fill" role="presentation">
+                          <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#create" type="button" role="tab" aria-controls="home" aria-selected="true">Create</button>
+                      </li>
+                  </ul>
+
+                  <div class="tab-content pt-2" id="myTabjustifiedContent">
+                      <div class="tab-pane fade show active" id="liste" role="tabpanel" aria-labelledby="home-tab">
+                               
+                        <div class="col-lg-8">
+                            <div class="row">
+                                
+                                <div class="card-body">
+                                    <h5 class="card-title">Create <span>| rendez-vous</span></h5>
+
+                                    <!-- Vertical Form -->
+                                    <form class="row g-3" #forme="ngForm" (ngSubmit)="nouveau_rdv(forme)">
+                                        <div class="col-12">
+                                          <label for="inputNanme4" class="form-label">Service</label>
+                                          <select class="form-control" name="service" ngModel required #service="ngModel">
+                                                <option *ngFor="let service of services; let i = index" [ngValue]="service">{{service.nom}}</option>
+                                          </select>
+                                        </div>
+                                        <div class="col-12">
+                                          <label for="inputNanme4" class="form-label">Employé</label>
+                                          <select class="form-control" name="employer" ngModel required #employer="ngModel">
+                                            <option *ngFor="let employer of employers; let i = index" [ngValue]="employer">{{employer.prenom}}</option>
+                                          </select>
+                                        </div>
+                                        <div class="col-12">
+                                          <label for="inputNanme4" class="form-label">Date et heure</label>
+                                          <input type="datetime-local" class="form-control" name="date_heure" ngModel required #duree="ngModel">
+                                        </div>
+                                        <div class="text-center">
+                                          <button type="submit" class="btn btn-primary">Inserer</button>
+                                        </div>
+                                    </form><!-- Vertical Form -->
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                      </div>
+                      
+                      <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="profile-tab">
+                          
+                        <div class="col-lg-8">
+                            <div class="row">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Liste <span>| rendez-vous</span></h5>
+
+                                    
+                                </div>
+                                      
+                            </div>
+                        </div>
+
+  
+                      </div>
+                  </div><!-- End Default Tabs -->
+  
+              </div>
+          </div>
+                                          
+                                         
+  
+          <!-- Right side columns -->
+          <div class="col-lg-4">
+  
+            
+  
+          </div><!-- End Right side columns -->
+  
+        </div>
+      </section>
+    
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <strong><span>RANDRIANARIVONY Joston Anjaramanana - RABEASIMBOLA Tojoniaina Njakanirina</span></strong>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>

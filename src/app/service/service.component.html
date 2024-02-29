@@ -1,0 +1,193 @@
+<p>service works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Mon Sallon</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/acceuil">
+          <i class="bi bi-grid"></i>
+          <span>Tableau de bord</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/service">
+            <i class="bi bi-grid"></i>
+            <span>Gestion Service</span>
+          </a>
+        </li><!-- End Dashboard Nav -->
+      </ul>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/gestionPersonnel">
+          <i class="bi bi-grid"></i>
+          <span>Gestion Personnel</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-grid"></i>
+          <span>Deconnexion</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Services</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+          <li class="breadcrumb-item">Service</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section dashboard">
+      <div class="row">
+
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <form class="row g-3" novalidate #forme="ngForm" (ngSubmit)="nouveau_service(forme)">
+              <div class="col-md-3">
+                <label for="inputNanme4" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" ngModel required #nom="ngModel">
+              </div>
+              <div class="col-md-3">
+                <label for="inputNanme4" class="form-label">Prix</label>
+                <input type="number" class="form-control" name="prix" ngModel required #prix="ngModel">
+              </div>
+              <div class="col-md-3">
+                <label for="inputNanme4" class="form-label">Durée</label>
+                <input type="time" class="form-control" name="duree" ngModel required #duree="ngModel">
+              </div>
+              <div class="col-md-3">
+                <label for="inputNanme4" class="form-label">Commission</label>
+                <input type="number" class="form-control" name="commission" ngModel required #commission="ngModel">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary">valider</button>
+                <br>
+                <br>
+                <p style="color: red;">{{mess}}</p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+              <br>
+              <form class="row g-3" #forme="ngForm">
+                  <div class="col-md-3">
+                      <!-- <input type="text" placeholder="recherche" class="form-control" id="inputEmail5"
+                          name="motcle" ngModel #motcle="ngModel" (ngModelChange)="recherche(motcle.value)"> -->
+                  </div>
+              </form>
+              <br>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nom</th>
+                          <th scope="col">Duree</th>
+                          <th scope="col">Prix</th>
+                          <th scope="col">Commission</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let All of Services;let i = index">
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{All.nom}}</td>
+                          <td>{{All.duree}}</td>
+                          <td>{{All.prix}} Ar</td>
+                          <td>{{All.commission}} %</td>
+                          <td (click)="OpenModal(All._id,All.nom,All.duree,All.prix,All.commission)" style="cursor: pointer; color: green;">modifier</td>
+                          <td>suprimer</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      
+      <div id="myModal" class="modal" [style.display]="modalDisplay">
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="CloseModal()">&times;</span>
+          <section class="section">
+            <div class="row">
+              <form class="row g-3" novalidate #forme="ngForm"
+              (ngSubmit)="UpdateRentrer(forme)">
+                  <div class="col-md-3">
+                      <label for="inputName5" class="form-label">Nom</label>
+                      <input type="text" class="form-control" [(ngModel)]="nomValue" name="nom" ngModel
+                      #nom="ngModel" required>
+                      <input type="hidden" [(ngModel)]="idValue" name="id" ngModel
+                      #id="ngModel" required/>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="inputName5" class="form-label">Duree</label>
+                      <input type="time" class="form-control" [(ngModel)]="dureevalue" name="duree" ngModel
+                      #duree="ngModel" required>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="inputName5" class="form-label">Prix</label>
+                      <input type="number" class="form-control" [(ngModel)]="prixvalue" name="prix" ngModel
+                      #prix="ngModel" required>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="inputName5" class="form-label">Commission</label>
+                      <input type="number" class="form-control" [(ngModel)]="commisValue" name="com" ngModel
+                      #com="ngModel" required>
+                  </div>
+                  <div>
+                      <button type="submit" class="btn btn-primary" (click)="CloseModal()">valider</button>
+                  </div>
+                </form>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <strong><span>RANDRIANARIVONY Joston Anjaramanana - RABEASIMBOLA Tojoniaina Njakanirina</span></strong>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>
