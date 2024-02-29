@@ -15,7 +15,7 @@ export class DataService {
 
   Seconnecter(modele:string,email:string,password:string){
     // const url = "https://backend-sallon-de-beaute.onrender.com/login/"+modele;
-    const url = "http://localhost:8282/login/"+modele;
+    const url = "https://backprojetmeanp11.onrender.com/login/"+modele;
     const Body = {
       "email" : email,
       "mdp" : password
@@ -31,7 +31,7 @@ export class DataService {
   }
 
   inscrit(mb:membres,modele:string){
-    var url='http://localhost:8282/inscription/'+modele;
+    var url='https://backprojetmeanp11.onrender.com/inscription/'+modele;
     const Body = {
       "nom" : mb.nom,
       "prenom" : mb.prenom,
@@ -48,7 +48,7 @@ export class DataService {
     return this.httpClient.post(url,Body,options);
   }
   updateService(service:Service){
-    var url='http://localhost:8282/updateService/';
+    var url='https://backprojetmeanp11.onrender.com/updateService/';
     const Body = {
       "id" : service._id,
       "nom" : service.nom,
@@ -66,42 +66,42 @@ export class DataService {
     return this.httpClient.post(url,Body,options);
   }
   gettous(modele:string){
-    return this.httpClient.get('http://localhost:8282/lister/'+modele);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/lister/'+modele);
   }
   recherche(modele:string,motcle:string){
-    return this.httpClient.get('http://localhost:8282/recherche/'+modele+'/'+motcle);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/recherche/'+modele+'/'+motcle);
   }
   getById(modele:string,id:string){
-    return this.httpClient.get('http://localhost:8282/getById/'+modele+'/'+id);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/getById/'+modele+'/'+id);
   }
   getHoraireById(id:string){
-    return this.httpClient.get('http://localhost:8282/getHoraire/'+id);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/getHoraire/'+id);
   }
   UpadteHoraireById(jour:string,id:string,nouveau:string){
-    return this.httpClient.get('http://localhost:8282/updateHoraire/'+jour+'/'+id+'/'+nouveau);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/updateHoraire/'+jour+'/'+id+'/'+nouveau);
   }
   nouveau_service(service:Service) {
-    return this.httpClient.post('http://localhost:8282/nouveau_service',service);
+    return this.httpClient.post('https://backprojetmeanp11.onrender.com/nouveau_service',service);
   }
   liste_service(){
-    return this.httpClient.get('http://localhost:8282/liste_service');
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/liste_service');
   }
   liste_employer(){
-    return this.httpClient.get('http://localhost:8282/liste_employer');
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/liste_employer');
   }
   nouveau_rendez_vous(rendez_vous:Rendez_vous) {
-    return this.httpClient.post('http://localhost:8282/nouveau_rendez_vous',rendez_vous);
+    return this.httpClient.post('https://backprojetmeanp11.onrender.com/nouveau_rendez_vous',rendez_vous);
   }
   liste_rendez_vous(){
-    return this.httpClient.get('http://localhost:8282/liste_rendez_vous');
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/liste_rendez_vous');
   }
   liste_rendez_vousbyId(id:string){
-    return this.httpClient.get('http://localhost:8282/liste_rendez_vous/'+id);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/liste_rendez_vous/'+id);
   }
   liste_rendez_vous_employer(id:string){
-    return this.httpClient.get('http://localhost:8282/liste_rendez_vous_employer/'+id);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/liste_rendez_vous_employer/'+id);
   }
   payer(id:string){
-    return this.httpClient.get('http://localhost:8282/payer/'+id);
+    return this.httpClient.get('https://backprojetmeanp11.onrender.com/payer/'+id);
   }
 }
